@@ -100,7 +100,7 @@ export default function Home({ assets }) {
       </header>
 
       <main className="container mx-auto py-12 rounded-lg">
-        <div class="mt-[64px]">
+        <div className="mt-[64px]">
           <div class="flex justify-center">
             <h1 class="header-big text-center mb-8 w-[777px] mx-auto">
               Easy send and Request Crypto.
