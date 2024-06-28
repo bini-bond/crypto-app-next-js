@@ -16,7 +16,7 @@
   }
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,6 +24,15 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+} */
+
+body {
+  background-color: #000;
+  color: #fff;
+  background-image: url('https://s3-alpha-sig.figma.com/img/9577/caca/18dc7bbbafd23d2f87e0d55115de2444?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=k7clMM1wqAg0GPz1HmteM1Yg7t0Q~8Ps4K7tnFOqQx5xMD8U9M5jFXU~OOEW9NRvmW~Sj3MYwDiAtt1V2Sf~MTfuSE7G8AVXB9EMESXxvRAwduvSmN-TFHQiu7F974wTQmkvYNjUglE1tuL3kunhqdy3BdcFtc2Sx~kAHkests50IXrB5wU~1fz6UxeSkHF1eF4kDuYH~uafLRFelY66CJ3OGb-ZFVYiUjWWm9JIncoYhU2W1LnKJbQfTQw~wN-DEEdxzmOvik6fR9Y13jQIunhBRtvhQobGG0NukUartaKIV4zxHKwS4IegSIzqizqQRXQvgJNI-rYSN90cU1KWOA__');
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-attachment:local;
 }
 
 @layer utilities {
@@ -31,3 +40,132 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Easy send and Request Crypto. */
+
+
+.header-big {
+font-style: normal;
+font-weight: 400;
+font-size: 68px;
+line-height: 76px;
+text-align: center;
+letter-spacing: 0.68px;
+color: #FFFFFF;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+.description {
+  /* Bring blockchain to the people. Solana supports experiences for power users, new consumers, and everyone in between. */
+
+width: 557px;
+height: 55px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+text-align: center;
+
+color: #FFFFFF;
+flex: none;
+order: 1;
+flex-grow: 0;
+
+}
+
+
+.usd-txt{
+  width: 35px;
+height: 21px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 21px;
+
+color: #666666;
+flex: none;
+order: 1;
+flex-grow: 0;
+}
+
+
+.assets-table {
+box-sizing: border-box;
+
+width: 1180px;
+height: 678px;
+
+background: rgba(0, 0, 0, 0.8);
+border: 1px solid #464646;
+backdrop-filter: blur(15px);
+border-radius: 10px;
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+
+.swap-tokens-txt {
+  /* SWAP TOKENS */
+
+margin: 0 auto;
+width: 137px;
+height: 23px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 23px;
+
+color: #FAFAFA;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+
+.page-footer {
+  /* 02 */
+
+box-sizing: border-box;
+
+width: 1180px;
+height: 418px;
+
+background: rgba(0, 0, 0, 0.8);
+border: 1px solid #464646;
+backdrop-filter: blur(15px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+}
+
+
+/* .swap-icon-btn{
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 566px;
+top: 156px;
+
+background: #000000;
+border-radius: 25px;
+
+
+} */

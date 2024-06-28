@@ -1,118 +1,190 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
+// pages/index.js
+import Head from "next/head";
+import AssetTable from "../components/AssetTable";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+export default function Home({ assets }) {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className=" min-h-screen text-white">
+      <Head>
+        <title>Crypto Dashboard</title>
+        <meta name="description" content="Crypto Dashboard" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <header className="py-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="text-xl font-bold">
+            <svg
+              width="193"
+              height="25"
+              viewBox="0 0 193 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M185.458 19.9877H177.422C177.039 19.9877 176.698 19.9045 176.399 19.7382C176.116 19.5718 175.866 19.3638 175.65 19.1143C175.45 18.8647 175.267 18.5902 175.101 18.2907C174.951 17.9746 174.827 17.6751 174.727 17.3923L173.279 13.0249L171.008 19.9877H164.021L166.341 12.8253H180.666L180.741 13.1248L180.841 12.8253H187.779L185.458 19.9877ZM166.391 12.7005L166.791 11.4527H180.292L180.641 12.7005H166.391ZM166.866 11.2031L167.24 10.0552H179.918L180.217 11.2031H166.866ZM167.365 9.68082L167.714 8.65762H179.543L179.818 9.68082H167.365ZM178.894 7.26007C178.994 7.42644 179.086 7.5845 179.169 7.73424C179.252 7.88397 179.327 8.03371 179.394 8.18345H167.864L168.163 7.26007H178.894ZM180.891 12.7005L181.29 11.4527H188.228L187.829 12.7005H180.891ZM181.365 11.2031L181.739 10.0552H188.677L188.303 11.2031H181.365ZM181.864 9.68082L182.214 8.65762H189.151L188.802 9.68082H181.864ZM168.363 6.66112L168.563 5.9873H177.148C177.364 5.9873 177.58 6.05385 177.796 6.18695C178.013 6.32005 178.221 6.47811 178.42 6.66112H168.363ZM182.363 8.18345L182.663 7.26007H189.601L189.301 8.18345H182.363ZM183.062 5.9873H190L189.8 6.66112H182.862L183.062 5.9873Z"
+                fill="white"
+              />
+              <path
+                d="M162.528 19.9877H155.54L157.861 12.8253H164.849L162.528 19.9877ZM157.911 12.7005L158.31 11.4527H165.298L164.899 12.7005H157.911ZM158.385 11.2031L158.759 10.0552H165.747L165.373 11.2031H158.385ZM158.884 9.68082L159.234 8.65762H166.221L165.872 9.68082H158.884ZM159.383 8.18345L159.683 7.26007H166.67L166.371 8.18345H159.383ZM160.082 5.9873H167.07L166.87 6.66112H159.882L160.082 5.9873Z"
+                fill="white"
+              />
+              <path
+                d="M132.16 20.0127L139.996 12.8253H147.957L140.346 20.0127H132.16ZM154.047 19.9877H147.084L149.405 12.8253H156.368L154.047 19.9877ZM141.768 11.2031L143.016 10.0552H157.266L156.892 11.2031H141.768ZM143.415 9.68082L144.563 8.65762H157.74L157.391 9.68082H143.415ZM145.062 8.18345L145.961 7.35989C145.961 7.35989 145.969 7.35158 145.986 7.33494C146.002 7.3183 146.027 7.29334 146.061 7.26007H158.189L157.89 8.18345H145.062ZM149.455 11.4527C149.405 11.4693 149.363 11.4943 149.33 11.5276C149.297 11.5609 149.247 11.6108 149.18 11.6773L148.082 12.7005H140.146L141.494 11.4527H149.455ZM149.455 12.7005L149.804 11.6274C149.804 11.6108 149.771 11.5858 149.704 11.5525C149.638 11.5193 149.588 11.486 149.555 11.4527H156.817L156.417 12.7005H149.455ZM146.834 6.66112C147.084 6.47811 147.342 6.32005 147.608 6.18695C147.874 6.05385 148.107 5.9873 148.307 5.9873H158.589L158.389 6.66112H146.834Z"
+                fill="white"
+              />
+              <path
+                d="M130.99 19.9877H123.978L125.675 14.7968H122.306L120.609 19.9877H113.621L115.942 12.8253H133.311L130.99 19.9877ZM115.992 12.7005L116.391 11.4527H133.761L133.361 12.7005H115.992ZM126.823 11.2031L127.197 10.0552H134.21L133.836 11.2031H126.823ZM116.466 11.2031L116.84 10.0552H123.828L123.454 11.2031H116.466ZM127.322 9.68082L127.671 8.65762H134.684L134.335 9.68082H127.322ZM116.965 9.68082L117.315 8.65762H124.302L123.953 9.68082H116.965ZM127.821 8.18345L128.121 7.26007H135.133L134.834 8.18345H127.821ZM117.464 8.18345L117.764 7.26007H124.751L124.452 8.18345H117.464ZM128.52 5.9873H135.533L135.333 6.66112H128.32L128.52 5.9873ZM117.963 6.66112L118.163 5.9873H125.151L124.951 6.66112H117.963Z"
+                fill="white"
+              />
+              <path
+                d="M104.435 15.7452C104.401 15.9115 104.418 16.053 104.485 16.1694C104.551 16.2692 104.651 16.3192 104.784 16.3192H113.169L111.971 19.9877H99.3186C98.9359 19.9877 98.5782 19.9045 98.2455 19.7382C97.9294 19.5551 97.6549 19.3222 97.4219 19.0394C97.2057 18.7565 97.0559 18.4321 96.9727 18.0661C96.9062 17.7001 96.9395 17.3174 97.0726 16.9181L98.3952 12.8253H105.383L104.435 15.7452ZM115.49 9.65586H106.955C106.872 9.65586 106.814 9.66418 106.781 9.68082H99.4184L99.4683 9.55604C99.5349 9.30648 99.6763 9.007 99.8926 8.65762H115.815L115.49 9.65586ZM100.217 8.18345C100.35 8.01707 100.483 7.85902 100.616 7.70928C100.766 7.55954 100.924 7.40981 101.09 7.26007H116.264L115.964 8.18345H100.217ZM104.035 5.9873H116.663L116.464 6.66112H101.914C102.263 6.46147 102.613 6.30342 102.962 6.18695C103.328 6.05385 103.686 5.9873 104.035 5.9873ZM98.4451 12.7005L98.8444 11.4527H105.832L105.433 12.7005H98.4451ZM106.356 10.0552C106.323 10.1217 106.29 10.1883 106.256 10.2548C106.223 10.3047 106.198 10.3546 106.182 10.4045L105.907 11.2031H98.9193L99.2937 10.0552H106.356Z"
+                fill="white"
+              />
+              <path
+                d="M86.0667 17.567L85.6424 15.8949L84.3198 19.9877H77.332L79.653 12.8253H91.7567C91.6735 13.2745 91.7068 13.7071 91.8565 14.123C92.0063 14.539 92.2225 14.9133 92.5054 15.246C92.8049 15.5622 93.1376 15.82 93.5036 16.0197C93.8863 16.2027 94.2773 16.2942 94.6766 16.2942H95.7746L94.5767 19.9877H88.7869C88.4542 19.9877 88.1464 19.9045 87.8635 19.7382C87.5807 19.5718 87.3228 19.3721 87.0899 19.1392C86.8736 18.8896 86.674 18.6234 86.4909 18.3406C86.3246 18.0578 86.1832 17.7999 86.0667 17.567ZM92.5553 11.4527C92.1893 11.8187 91.9563 12.1598 91.8565 12.4759L91.7817 12.7005H79.7029L80.1022 11.4527H92.5553ZM87.2396 11.0285C87.3727 10.8621 87.4892 10.704 87.589 10.5543C87.7055 10.3879 87.8219 10.2215 87.9384 10.0552H94.427C94.1442 10.2049 93.8697 10.3796 93.6035 10.5792C93.3539 10.7623 93.0877 10.9702 92.8049 11.2031H80.177L80.5514 10.0552H87.5391L87.2396 11.0285ZM88.2379 9.68082C88.3876 9.49781 88.529 9.32311 88.6621 9.15674C88.7952 8.99036 88.9533 8.82399 89.1363 8.65762H98.2703L97.9209 9.68082H95.55H95.4752H88.2379ZM89.7103 8.18345V8.13354C89.7768 8.06699 89.9016 7.95884 90.0846 7.80911C90.2676 7.64273 90.5006 7.45972 90.7834 7.26007H98.7195L98.42 8.18345H89.7103ZM80.6762 9.68082L81.0255 8.65762H88.0133L87.6639 9.68082H80.6762ZM81.1753 8.18345L81.4748 7.26007H88.4625L88.163 8.18345H81.1753ZM81.6744 6.66112L81.8741 5.9873H88.8618L88.6621 6.66112H81.6744ZM91.7567 6.66112C92.0728 6.49475 92.3972 6.35333 92.73 6.23687C93.0794 6.10377 93.4454 6.02058 93.8281 5.9873H99.1188L98.9191 6.66112H91.7567Z"
+                fill="white"
+              />
+              <path
+                d="M63.0286 19.9877C62.6459 19.9877 62.2882 19.9045 61.9555 19.7382C61.6393 19.5551 61.3648 19.3222 61.1319 19.0394C60.9156 18.7565 60.7659 18.4321 60.6827 18.0661C60.6161 17.7001 60.6494 17.3174 60.7825 16.9181L62.1052 12.8253H69.0929L68.1446 15.7452C68.1113 15.9115 68.128 16.053 68.1945 16.1694C68.261 16.2692 68.3609 16.3192 68.494 16.3192H76.8792L75.6813 19.9877H63.0286ZM63.1783 9.55604C63.2449 9.30648 63.3863 9.007 63.6026 8.65762H79.5246L79.2002 9.65586H70.6652C70.582 9.65586 70.5237 9.66418 70.4905 9.68082H63.1284L63.1783 9.55604ZM63.927 8.18345C64.0601 8.01707 64.1932 7.85902 64.3263 7.70928C64.476 7.55954 64.6341 7.40981 64.8005 7.26007H79.9738L79.6743 8.18345H63.927ZM80.3731 5.9873L80.1735 6.66112H65.624C65.9734 6.46147 66.3228 6.30342 66.6722 6.18695C67.0382 6.05385 67.3959 5.9873 67.7453 5.9873H80.3731ZM62.1551 12.7005L62.5544 11.4527H69.5421L69.1428 12.7005H62.1551ZM69.8915 10.4045L69.617 11.2031H62.6293L63.0036 10.0552H70.0662C70.0329 10.1217 69.9997 10.1883 69.9664 10.2548C69.9331 10.3047 69.9082 10.3546 69.8915 10.4045Z"
+                fill="white"
+              />
+              <path
+                d="M59.2828 16.9181C59.1497 17.3174 58.9251 17.7001 58.609 18.0661C58.2928 18.4321 57.9351 18.7565 57.5358 19.0394C57.1365 19.3222 56.7123 19.5551 56.2631 19.7382C55.8305 19.9045 55.4229 19.9877 55.0402 19.9877H43.4106C43.028 19.9877 42.6703 19.9045 42.3375 19.7382C42.0214 19.5551 41.7469 19.3222 41.514 19.0394C41.2977 18.7565 41.148 18.4321 41.0648 18.0661C40.9982 17.7001 41.0315 17.3174 41.1646 16.9181L42.4873 12.8253H49.45L48.5017 15.7452C48.4851 15.8284 48.4851 15.9448 48.5017 16.0946C48.535 16.2443 48.6598 16.3192 48.876 16.3192H51.9706C52.0704 16.3192 52.1952 16.2526 52.345 16.1195C52.4947 15.9698 52.6112 15.845 52.6943 15.7452L53.6427 12.8253H60.6055L59.2828 16.9181ZM61.8283 8.65762C61.8283 8.95709 61.7784 9.25656 61.6786 9.55604L61.6287 9.68082H54.2416C54.225 9.68082 54.2084 9.68082 54.1917 9.68082C54.1917 9.66418 54.1751 9.65586 54.1418 9.65586H50.9973C50.9807 9.65586 50.9641 9.66418 50.9474 9.68082C50.9308 9.68082 50.9141 9.68082 50.8975 9.68082H43.5105L43.5604 9.55604C43.6269 9.30648 43.7684 9.007 43.9846 8.65762H61.8283ZM61.5288 7.26007C61.612 7.40981 61.6703 7.55954 61.7035 7.70928C61.7368 7.85902 61.7701 8.01707 61.8034 8.18345H44.3091C44.4422 8.01707 44.5753 7.85902 44.7084 7.70928C44.8581 7.55954 45.0162 7.40981 45.1825 7.26007H61.5288ZM48.1274 5.9873H59.4076C59.7569 5.9873 60.0647 6.05385 60.3309 6.18695C60.6138 6.30342 60.8717 6.46147 61.1046 6.66112H46.0061C46.3555 6.46147 46.7049 6.30342 47.0543 6.18695C47.4203 6.05385 47.778 5.9873 48.1274 5.9873ZM42.5372 12.7005L42.9365 11.4527H49.8993L49.5 12.7005H42.5372ZM53.6926 12.7005L54.0919 11.4527H61.0547L60.6554 12.7005H53.6926ZM50.2237 10.4545L49.9741 11.2031H43.0114L43.3857 10.0552H50.4233C50.3734 10.1383 50.3318 10.2132 50.2986 10.2798C50.2819 10.3297 50.257 10.3879 50.2237 10.4545ZM54.1668 11.2031L54.4163 10.4545C54.4829 10.3047 54.4912 10.1716 54.4413 10.0552H61.5039L61.1295 11.2031H54.1668Z"
+                fill="white"
+              />
+              <path
+                d="M25.4891 19.9877C25.0565 19.9877 24.6905 19.8962 24.391 19.7132C24.0916 19.5302 23.867 19.2806 23.7172 18.9645C23.5841 18.6318 23.5176 18.2574 23.5176 17.8415C23.5176 17.4089 23.6008 16.9431 23.7671 16.4439L24.9401 12.8253H31.9278L31.1043 15.3958C30.9878 15.7285 30.9795 15.9615 31.0793 16.0946C31.1958 16.211 31.4204 16.2859 31.7531 16.3192H39.8639L38.666 19.9877H25.4891ZM24.99 12.7005L25.3893 11.4527H32.377L31.9777 12.7005H24.99ZM25.4642 11.2031L25.8385 10.0552H32.8262L32.4519 11.2031H25.4642ZM25.9633 9.68082L26.3127 8.65762H33.3004L32.951 9.68082H25.9633ZM26.4624 8.18345L26.7619 7.26007H33.7496L33.4501 8.18345H26.4624ZM27.1612 5.9873H34.1489L33.9493 6.66112H26.9615L27.1612 5.9873Z"
+                fill="white"
+              />
+              <path
+                d="M17.3498 19.9877H3L5.32092 12.8253H22.4658L22.4159 12.8752C22.6987 13.2246 22.8235 13.6572 22.7902 14.1729C22.7736 14.6887 22.6738 15.2128 22.4908 15.7452C22.341 16.211 22.1164 16.6935 21.817 17.1926C21.5341 17.6918 21.1764 18.1493 20.7438 18.5652C20.3279 18.9812 19.8288 19.3222 19.2465 19.5884C18.6808 19.8546 18.0486 19.9877 17.3498 19.9877ZM23.7136 11.4527C23.4308 11.9518 23.0731 12.3678 22.6405 12.7005H5.37084L5.77014 11.4527H23.7136ZM16.9755 9.68082C16.9422 9.68082 16.9089 9.68082 16.8756 9.68082C16.8424 9.66418 16.8008 9.65586 16.7509 9.65586H13.3319L13.3069 9.68082H6.34413L6.69351 8.65762H24.4873C24.4873 8.84063 24.4706 9.01532 24.4374 9.1817C24.4207 9.34807 24.4041 9.51444 24.3874 9.68082H16.9755ZM24.1129 7.26007C24.1795 7.39317 24.2377 7.54291 24.2876 7.70928C24.3542 7.85902 24.4041 8.01707 24.4374 8.18345H6.84325L7.14272 7.26007H24.1129ZM7.34237 6.66112L7.54202 5.9873H21.8669C22.2662 5.9873 22.6072 6.05385 22.8901 6.18695C23.1895 6.30342 23.4557 6.46147 23.6887 6.66112H7.34237ZM5.845 11.2031L6.21935 10.0552H13.1821L12.8078 11.2031H5.845ZM16.7009 11.2031C17.0004 11.1366 17.2084 10.9037 17.3248 10.5044C17.3748 10.3713 17.3914 10.2215 17.3748 10.0552H24.3126L24.2627 10.2299C24.1961 10.4129 24.1296 10.5876 24.063 10.7539C23.9965 10.9203 23.9216 11.07 23.8384 11.2031H16.7009ZM15.1037 14.722H11.6847L11.1607 16.3192H14.6046C14.9207 16.3192 15.1703 16.236 15.3533 16.0696C15.5363 15.9032 15.6694 15.7036 15.7526 15.4707C15.8358 15.2045 15.8358 15.0131 15.7526 14.8967C15.6694 14.7802 15.4531 14.722 15.1037 14.722Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <nav>
+            <ul className="flex space-x-4">
+              <li>
+                <a href="#" className="hover:underline">
+                  Exchange
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">
+                  Last Transactions
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">
+                  Invite Friend
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">
+                  Notifications
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div>
+          <button className="border-2 border-purple-600 text-white bg-transparent py-2 px-4 rounded mr-2">
+  Log In
+</button>
+
+
+            <button className="bg-purple-600 py-2 px-4 rounded">Sign Up</button>
+          </div>
         </div>
+      </header>
+
+      <main className="container mx-auto py-12 rounded-lg">
+        <div class="mt-[64px]">
+          <div class="flex justify-center">
+            <h1 class="header-big text-center mb-8 w-[777px] mx-auto">
+              Easy send and Request Crypto.
+            </h1>
+          </div>
+          <p class="description text-center mb-12 w-[557px] mx-auto">
+            Bring blockchain to the people. Solana supports experiences for
+            power users, new consumers, and everyone in between.
+          </p>
+        </div>
+
+        <AssetTable assets={assets} />
+      </main>
+
+      <footer className="page-footer container mx-auto py-12 bg-black bg-opacity-75 rounded-lg mt-8 pt-[40px] pl-[40px] pr-[40px]">
+        <div className="sub-container">
+          <h2 className="text-sm font-bold mb-4">SWAP TOKENS</h2>
+          <div className="flex flex-row items-center">
+  {/* First Element */}
+  <div className="flex-1 bg-[#1E1E1E] p-4 rounded-lg">
+    <div className="flex justify-between">
+      <div className="text-center">
+        <p className="text-xl">0.00</p>
+        <p className="text-sm text-gray-400">$0.00</p>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="text-center ml-4">
+        <select className="bg-black text-white py-2 px-4 rounded">
+          <option>BTC</option>
+          <option>ETH</option>
+          <option>DOGE</option>
+        </select>
+        <p className="text-sm text-gray-400 mt-2">Balance: 24,240</p>
       </div>
+    </div>
+  </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+  {/* Swap Button */}
+  <div className="relative">
+  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black rounded-full p-2">
+    <img src="/icons/coins-swap.png" alt="swap-icon" className="w-8 h-8 rounded-full" />
+  </div>
+</div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+  {/* Third Element */}
+  <div className="flex-1 bg-[#1E1E1E] p-4 rounded-lg">
+    <div className="flex justify-between">
+      <div className="text-center">
+        <p className="text-xl">0.00</p>
+        <p className="text-sm text-gray-400">$0.00</p>
       </div>
-    </main>
+      <div className="text-center ml-4">
+        <select className="bg-black text-white py-2 px-4 rounded">
+          <option>BTC</option>
+          <option>ETH</option>
+          <option>DOGE</option>
+        </select>
+        <p className="text-sm text-gray-400 mt-2">Balance: 24,240</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div className="text-center mt-4">
+            <p className="text-sm text-gray-400">1 BTC = 32.4039 ETH</p>
+            <p className="text-sm text-gray-400">
+              <a href="#" className="hover:underline">
+                Free exchange
+              </a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
+}
+
+export async function getServerSideProps() {
+  const res = await fetch("http://localhost:3000/api/assets");
+  const assets = await res.json();
+  console.log(assets);
+  return {
+    props: {
+      assets: assets.data,
+    },
+  };
 }
