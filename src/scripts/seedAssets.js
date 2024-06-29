@@ -9,51 +9,51 @@ async function seedAssets() {
     {
       name: "BTC",
       iconPath: "/icons/bitcoin.svg",
-      lastTrade: "30,000 USD",
-      change24h: "+3.5%",
-      changeValue24h: "+1,000 USD"
+      lastTrade: "$63,000.00",
+      change24h: "-2.21%",
+      changeValue24h: "-$1.426.18"
     },
     {
       name: "ETH",
       iconPath: "/icons/ethereum.svg",
-      lastTrade: "2,000 USD",
-      change24h: "+2.1%",
-      changeValue24h: "+42 USD"
+      lastTrade: "$3,408.90",
+      change24h: "-0.33%",
+      changeValue24h: "-$11.20"
     },
     {
       name: "DOGE",
       iconPath: "/icons/dogecoin.svg",
-      lastTrade: "0.25 USD",
-      change24h: "+8.2%",
-      changeValue24h: "+0.019 USD"
+      lastTrade: "$0.15",
+      change24h: "+15.75%",
+      changeValue24h: "$0.02"
     },
     {
       name: "ALGO",
       iconPath: "/icons/algocoin.svg",
-      lastTrade: "350 USD",
-      change24h: "+4.7%",
-      changeValue24h: "+15.75 USD"
+      lastTrade: "$0.15",
+      change24h: "+0.00%",
+      changeValue24h: "$0.00"
     },
     {
       name: "DOT",
       iconPath: "/icons/dotcoin.svg",
-      lastTrade: "1.50 USD",
-      change24h: "+5.0%",
-      changeValue24h: "+0.075 USD"
+      lastTrade: "$5.64",
+      change24h: "+0.00%",
+      changeValue24h: "$0.00"
     },
     {
       name: "UNI",
       iconPath: "/icons/unicoin.svg",
-      lastTrade: "1.50 USD",
-      change24h: "+5.0%",
-      changeValue24h: "+0.075 USD"
+      lastTrade: "$9.79",
+      change24h: "+0.00%",
+      changeValue24h: "$0.00"
     },
     {
       name: "COMP",
       iconPath: "/icons/compcoin.svg",
-      lastTrade: "1.50 USD",
-      change24h: "+5.0%",
-      changeValue24h: "+0.075 USD"
+      lastTrade: "$45.67",
+      change24h: "-0.95%",
+      changeValue24h: "-$0.44"
     }
   ];
   console.log("starting transaction")

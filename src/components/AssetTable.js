@@ -27,8 +27,8 @@ export default function AssetTable({ assets }) {
                 <td className="py-2 px-2 sm:px-4">{asset.lastTrade}</td>
                 <td
                   className={`py-2 px-2 sm:px-4 ${
-                    asset.change24h.includes("+")
-                      ? "text-green-500"
+                    asset.change24h.includes("+") && asset.change24h !== "+0.00%" 
+                      ? "text-green-500" : asset.change24h === "+0.00%" ? "text-[#666666]"
                       : "text-red-500"
                   }`}
                 >
@@ -36,8 +36,8 @@ export default function AssetTable({ assets }) {
                 </td>
                 <td
                   className={`py-2 px-2 sm:px-4 ${
-                    asset.changeValue24h.includes("+")
-                      ? "text-green-500"
+                    !asset.changeValue24h.includes("-") && asset.changeValue24h !== "$0.00"
+                      ? "text-green-500" : asset.changeValue24h === "$0.00" ? "text-[#666666]"
                       : "text-red-500"
                   }`}
                 >
