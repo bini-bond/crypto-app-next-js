@@ -1,7 +1,12 @@
 import Image from "next/image";
-// pages/index.js
+import getConfig from "next/config";
 import Head from "next/head";
 import AssetTable from "../components/AssetTable";
+
+// const { publicRuntimeConfig } = getConfig();
+// console.log('publicRuntimeConfig:', publicRuntimeConfig);
+
+// const apiUrl = `${publicRuntimeConfig.apiUrl}/assets`;
 
 export default function Home({ assets }) {
   return (
@@ -14,7 +19,7 @@ export default function Home({ assets }) {
 
       <header className="py-4">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="text-xl font-bold">
+          <div className="ml-[23px]">
             <svg
               width="193"
               height="25"
@@ -65,7 +70,7 @@ export default function Home({ assets }) {
             </svg>
           </div>
           <nav>
-            <ul className="flex space-x-4">
+            <ul className="flex space-x-4 w-[484px]">
               <li>
                 <a href="#" className="hover:underline">
                   Exchange
@@ -89,24 +94,23 @@ export default function Home({ assets }) {
             </ul>
           </nav>
           <div>
-          <button className="border-2 border-purple-600 text-white bg-transparent py-2 px-4 rounded mr-2">
-  Log In
-</button>
+            <button className="border-2 border-purple-600 text-white bg-transparent py-2 px-4 rounded mr-2">
+              LOG IN
+            </button>
 
-
-            <button className="bg-purple-600 py-2 px-4 rounded">Sign Up</button>
+            <button className="bg-purple-600 py-2 px-4 rounded">SIGN UP</button>
           </div>
         </div>
       </header>
 
       <main className="container mx-auto py-12 rounded-lg">
         <div className="mt-[64px]">
-          <div class="flex justify-center">
-            <h1 class="header-big text-center mb-8 w-[777px] mx-auto">
+          <div className="flex justify-center">
+            <h1 className="header-big text-center mb-8 w-[777px] mx-auto">
               Easy send and Request Crypto.
             </h1>
           </div>
-          <p class="description text-center mb-12 w-[557px] mx-auto">
+          <p className="description text-center mb-12 w-[557px] mx-auto">
             Bring blockchain to the people. Solana supports experiences for
             power users, new consumers, and everyone in between.
           </p>
@@ -119,55 +123,63 @@ export default function Home({ assets }) {
         <div className="sub-container">
           <h2 className="text-sm font-bold mb-4">SWAP TOKENS</h2>
           <div className="flex flex-row items-center">
-  {/* First Element */}
-  <div className="flex-1 bg-[#1E1E1E] p-4 rounded-lg">
-    <div className="flex justify-between">
-      <div className="text-center">
-        <p className="text-xl">0.00</p>
-        <p className="text-sm text-gray-400">$0.00</p>
-      </div>
-      <div className="text-center ml-4">
-        <select className="bg-black text-white py-2 px-4 rounded">
-          <option>BTC</option>
-          <option>ETH</option>
-          <option>DOGE</option>
-        </select>
-        <p className="text-sm text-gray-400 mt-2">Balance: 24,240</p>
-      </div>
-    </div>
-  </div>
+            {/* First Element */}
+            <div className="flex-1 bg-[#1E1E1E] p-4 rounded-lg">
+              <div className="flex justify-between">
+                <div className="text-center">
+                  <p className="rate-value">0.00</p>
+                  <p className="text-sm text-gray-400">$0.00</p>
+                </div>
+                <div className="text-center ml-4">
+                  <select className="bg-black text-white py-2 px-4 rounded">
+                    <option>BTC</option>
+                    <option>ETH</option>
+                    <option>DOGE</option>
+                  </select>
+                  <p className="text-sm text-gray-400 mt-2">Balance: 24,240</p>
+                </div>
+              </div>
+            </div>
 
-  {/* Swap Button */}
-  <div className="relative">
-  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black rounded-full p-2">
-    <img src="/icons/coins-swap.png" alt="swap-icon" className="w-8 h-8 rounded-full" />
-  </div>
-</div>
+            {/* Swap Button */}
+            <div className="relative flex justify-center items-center">
+              <div className="bg-black rounded-full p-2">
+                <img
+                  src="/icons/coins-swap.png"
+                  alt="swap-icon"
+                  className="w-8 h-8 rounded-full"
+                />
+              </div>
+            </div>
 
+            {/* Third Element */}
+            <div className="flex-1 bg-[#1E1E1E] p-4 rounded-lg">
+              <div className="flex justify-between">
+                <div className="text-center">
+                  <p className="rate-value">0.00</p>
+                  <p className="text-sm text-gray-400">$0.00</p>
+                </div>
+                <div className="text-center ml-4">
+                  <select className="bg-black text-white py-2 px-4 rounded">
+                    <option>BTC</option>
+                    <option>ETH</option>
+                    <option>DOGE</option>
+                  </select>
+                  <p className="text-sm text-gray-400 mt-2">Balance: 24,240</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center mt-[30px]">
+            <button className="bg-purple-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded shadow-lg transform hover:scale-105 transition-transform duration-200">
+              SWOP TOKENS
+            </button>
+          </div>
 
-  {/* Third Element */}
-  <div className="flex-1 bg-[#1E1E1E] p-4 rounded-lg">
-    <div className="flex justify-between">
-      <div className="text-center">
-        <p className="text-xl">0.00</p>
-        <p className="text-sm text-gray-400">$0.00</p>
-      </div>
-      <div className="text-center ml-4">
-        <select className="bg-black text-white py-2 px-4 rounded">
-          <option>BTC</option>
-          <option>ETH</option>
-          <option>DOGE</option>
-        </select>
-        <p className="text-sm text-gray-400 mt-2">Balance: 24,240</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-          <div className="text-center mt-4">
+          <div className="flex flex-col items-start mt-4">
             <p className="text-sm text-gray-400">1 BTC = 32.4039 ETH</p>
             <p className="text-sm text-gray-400">
-              <a href="#" className="hover:underline">
+              <a href="#" className="hover:underline" style={{color: "#3980FF"}}>
                 Free exchange
               </a>
             </p>
@@ -179,9 +191,11 @@ export default function Home({ assets }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3000/api/assets");
+  const res = await fetch(
+    "https://crypto-app-next-js-iota.vercel.app/api/assets"
+    // "http://localhost:3000/api/assets"
+  );
   const assets = await res.json();
-  console.log(assets);
   return {
     props: {
       assets: assets.data,
